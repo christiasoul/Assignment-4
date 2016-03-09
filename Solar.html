@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="Common/initShaders.js"></script>
+  <script type="text/javascript" src="Common/MV.js"></script>
+  <script type="text/javascript" src="Common/MatrixStack.js"></script>  
+  <script type="text/javascript" src="Shapes/Sphere.js"></script>
+  <script type="text/javascript" src="SolarSystem.js"></script>
+  <script type="text/javascript" src="Solar.js"></script>
+
+  <script type="x-shader/x-vertex" id="Planet-vertex-shader">
+  attribute vec4  vPosition;
+
+  uniform mat4  MV;
+  uniform mat4  P;
+
+  void main()
+  {
+    gl_Position = P * MV * vPosition;
+  }
+  </script>
+
+  <script type="x-shader/x-fragment" id="Planet-fragment-shader">
+  precision highp float;
+
+  uniform vec4  color;
+
+  void main()
+  {
+    gl_FragColor = color;
+  }
+  </script>
+</head>
+
+<body>
+  <canvas id="webgl-canvas" width="800" height="800"></canvas>
+</body>
+</html>
